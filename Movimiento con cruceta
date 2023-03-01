@@ -1,0 +1,10 @@
+void Update()
+    {
+        float movHorizontal = Input.GetAxis("Horizontal");
+        float movVertical = Input.GetAxis("Vertical");
+
+        Vector3 movimiento = new Vector3(movHorizontal, 0.0f, movVertical);
+        rb.AddForce(movimiento * velocidad);
+        camara.transform.position = this.transform.position + offset;
+
+    }
