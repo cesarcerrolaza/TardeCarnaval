@@ -1,0 +1,27 @@
+private void OnTriggerEnter(Collider other) {
+        Debug.Log("He chocado con alquien");
+
+        if(other.gameObject.CompareTag("Respawn")){
+            Debug.Log("TE HAS CAIDO. INTENTALO DE NUEVO");
+            SceneManager.LoadScene("Escena1", LoadSceneMode.Single);
+        }
+        else{
+            if(other.gameObject.CompareTag("capsula")){
+                estrellas = estrellas + 2;
+            }
+            else{
+                if(other.gameObject.CompareTag("diamante")){
+                    fuenteSonido.PlayOneShot(sonidoDiamante);
+                    estrellas ++;
+                }
+            }
+            texto.text = "Estrellas:" + estrellas;
+            Destroy(other.gameObject); 
+        }
+
+
+        if(estrellas >= 6){
+          Debug.Log("HAS COMPLETADO ESTE NIVEL!");
+          SceneManager.LoadScene("Segunda", LoadSceneMode.Single); 
+        }
+    }
